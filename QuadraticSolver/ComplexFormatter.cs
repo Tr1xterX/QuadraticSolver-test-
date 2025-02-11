@@ -20,7 +20,7 @@ namespace QuadraticSolver
             {
                 return $"{imaginaryPart}i";
             }
-            if (imaginaryPart < 1)
+            if (imaginaryPart < 0)
             {
                 return $"{realPart}{imaginaryPart}i";
             }
