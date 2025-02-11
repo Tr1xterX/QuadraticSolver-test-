@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -37,7 +38,7 @@ namespace QuadraticSolver
                 }
             }
 
-            var solve = new EquationSolver();
+            var solver = new EquationSolver();
             List<(double, double, double)> coefficients;
             try
             {
@@ -58,8 +59,16 @@ namespace QuadraticSolver
             {
                 try
                 {
-                    var (root1, root2) = solve.Solve(a, b, c);
-                    Console.WriteLine($"Уравнение {a}x^2 + {b}x +{c} = 0 иммет корни: {root1} и {root2}.");
+                    var (root1, root2, isComplex) = solver.Solve(a, b, c);
+                    Console.WriteLine($"\nУравнение {a}x^2 + {b}x + {c} = 0 имеет корни:");
+
+                    if (isComplex)
+                    {
+                        Console.WriteLine("(мнимые)");
+                    }
+
+                    Console.WriteLine($"Корень 1: {FormatComplex(root1)}");
+                    Console.WriteLine($"Корень 2: {FormatComplex(root2)}");
                 }
                 catch (InvalidOperationException ex)
                 {
@@ -67,6 +76,26 @@ namespace QuadraticSolver
                 }
             }
 
+        }
+
+        static string FormatComplex(Complex number)
+        {
+            // Округляем до 5 знаков (избежание вычисл. ошибок с плав. точкой)
+            double realPart = Math.Round(number.Real, 5);
+            double imaginaryPart = Math.Round(number.Imaginary, 5);
+
+            if (imaginaryPart == 0)
+            {
+                return $"{realPart}";
+            }
+            if (realPart == 0)
+            {
+                return $"{imaginaryPart}i";
+            }
+            else
+            {
+                return $"{realPart} + {imaginaryPart}i";
+            }
         }
     }
 }
