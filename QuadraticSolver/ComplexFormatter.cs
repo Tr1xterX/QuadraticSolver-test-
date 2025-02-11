@@ -20,10 +20,15 @@ namespace QuadraticSolver
             {
                 return $"{imaginaryPart}i";
             }
+            if (imaginaryPart < 1)
+            {
+                return $"{realPart}{imaginaryPart}i";
+            }
             else
             {
-                return $"{realPart} + {imaginaryPart}i";
+                return $"{realPart}+{imaginaryPart}i";
             }
+                
         }
     }
 }
