@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using System.Globalization;
 
 namespace QuadraticSolver
 {
@@ -8,35 +8,38 @@ namespace QuadraticSolver
     {
         public List<(double, double, double)> ReadInput()
         {
-            var coefficinets = new List<(double, double, double)>();
-
+            var coefficients = new List<(double, double, double)>();
             try
             {
                 while (true)
                 {
-                    Console.WriteLine("Введите коэффициенты: a b c (через пробел кажджый)");
+                    Console.WriteLine("Введите коэффициенты: a b c (через пробел каждый) или оставьте строку пустой для завершения ввода:");
                     var input = Console.ReadLine();
 
-                    var parts = input.Split(' '); ;
-                    if (parts.Length == 3 &&
-                            double.TryParse(parts[0], out double a) &&
-                            double.TryParse(parts[1], out double b) &&
-                            double.TryParse(parts[2], out double c))
+                    if (string.IsNullOrWhiteSpace(input))
                     {
-                        coefficinets.Add((a, b, c));
-                        break;
+                        break; // Завершаем ввод, если строка пустая
+                    }
+
+                    var parts = input.Split(' ');
+                    if (parts.Length == 3 &&
+                        double.TryParse(parts[0], NumberStyles.Any, CultureInfo.InvariantCulture, out double a) && //отрабатываем любые стили чистлового формата (. и ,)
+                        double.TryParse(parts[1], NumberStyles.Any, CultureInfo.InvariantCulture, out double b) &&
+                        double.TryParse(parts[2], NumberStyles.Any, CultureInfo.InvariantCulture, out double c))
+                    {
+                        coefficients.Add((a, b, c));
                     }
                     else
                     {
-                        Console.WriteLine("Введенные данные некоорректы, пожалуйста введите 3 коэффициента уравнения через пробел");
+                        Console.WriteLine("Введенные данные некорректны, пожалуйста, введите 3 коэффициента уравнения через пробел.");
                     }
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Ошибка при решении: {ex.Message}");
+                Console.WriteLine($"Ошибка при считывании данных: {ex.Message}");
             }
-            return coefficinets;
+            return coefficients;
         }
     }
 }

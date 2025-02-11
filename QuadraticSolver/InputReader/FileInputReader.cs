@@ -43,13 +43,14 @@ namespace QuadraticSolver
                     }
                     else
                     {
-                        Console.WriteLine($"Ошибка при чтении строки: {line}");
+                         throw new FormatException($"Ошибка при чтении строки: {line}");
                     }
                 }
             }
-            catch (Exception ex) 
+            catch (Exception ex) when (ex is FileNotFoundException || ex is UnauthorizedAccessException)
             {
                 Console.WriteLine($"Ошибка при чтении файла: {ex.Message}");
+                throw;
             }
 
             return coefficients;
