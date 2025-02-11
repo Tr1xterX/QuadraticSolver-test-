@@ -67,8 +67,8 @@ namespace QuadraticSolver
                         Console.WriteLine("(мнимые)");
                     }
 
-                    Console.WriteLine($"Корень 1: {FormatComplex(root1)}");
-                    Console.WriteLine($"Корень 2: {FormatComplex(root2)}");
+                    Console.WriteLine($"Корень 1: {root1.ToStringFormat()}");
+                    Console.WriteLine($"Корень 2: {root2.ToStringFormat()}");
                 }
                 catch (InvalidOperationException ex)
                 {
@@ -76,26 +76,6 @@ namespace QuadraticSolver
                 }
             }
 
-        }
-
-        static string FormatComplex(Complex number)
-        {
-            // Округляем до 5 знаков (избежание вычисл. ошибок с плав. точкой)
-            double realPart = Math.Round(number.Real, 5);
-            double imaginaryPart = Math.Round(number.Imaginary, 5);
-
-            if (imaginaryPart == 0)
-            {
-                return $"{realPart}";
-            }
-            if (realPart == 0)
-            {
-                return $"{imaginaryPart}i";
-            }
-            else
-            {
-                return $"{realPart} + {imaginaryPart}i";
-            }
         }
     }
 }

@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ComplexFormatter.cs" />
     <Compile Include="InputReader\ConsoleInputReader.cs" />
     <Compile Include="EquationSolver.cs" />
     <Compile Include="InputReader\FileInputReader.cs" />
