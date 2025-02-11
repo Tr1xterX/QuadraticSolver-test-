@@ -1,9 +1,20 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35527.113 d17.12
+VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuadraticSolver", "QuadraticSolver\QuadraticSolver.csproj", "{CD4207A8-9A85-4B19-98B9-A747A0A3B599}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "InputFilesForTest", "InputFilesForTest", "{BF3A00B7-1AC5-4E59-9455-0614E5877148}"
+	ProjectSection(SolutionItems) = preProject
+		test1.txt = test1.txt
+		test2.txt = test2.txt
+		test3.txt = test3.txt
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{AADC741E-C037-4A36-8276-0030D235E1BE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ggg", "ggg", "{B2FA2773-4C03-4B00-B8DE-FCF3B5FA3DBD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +26,10 @@ Global
 		{CD4207A8-9A85-4B19-98B9-A747A0A3B599}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CD4207A8-9A85-4B19-98B9-A747A0A3B599}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CD4207A8-9A85-4B19-98B9-A747A0A3B599}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AADC741E-C037-4A36-8276-0030D235E1BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AADC741E-C037-4A36-8276-0030D235E1BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AADC741E-C037-4A36-8276-0030D235E1BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AADC741E-C037-4A36-8276-0030D235E1BE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
