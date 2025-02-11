@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace QuadraticSolver
 {
@@ -15,6 +11,7 @@ namespace QuadraticSolver
 
             Console.WriteLine("Выберите способ ввода данных: 1 - Файл, 2 - Вручную");
             
+            //Считываение данных
             while (true) 
             {         
                 string choice = Console.ReadLine();
@@ -38,6 +35,7 @@ namespace QuadraticSolver
                 }
             }
 
+            //заполнение коэффициентов
             var solver = new EquationSolver();
             List<(double, double, double)> coefficients;
             try
@@ -55,26 +53,9 @@ namespace QuadraticSolver
                 return;
             }
 
-            foreach (var (a, b, c) in coefficients)
-            {
-                try
-                {
-                    var (root1, root2, isComplex) = solver.Solve(a, b, c);
-                    Console.WriteLine($"\nУравнение {a}x^2 + {b}x + {c} = 0 имеет корни:");
-
-                    if (isComplex)
-                    {
-                        Console.WriteLine("(мнимые)");
-                    }
-
-                    Console.WriteLine($"Корень 1: {root1.ToStringFormat()}");
-                    Console.WriteLine($"Корень 2: {root2.ToStringFormat()}");
-                }
-                catch (InvalidOperationException ex)
-                {
-                    Console.WriteLine($"Ошибка в уравнении {a}x^2 + {b}x + {c} = 0: {ex.Message}");
-                }
-            }
+            //Обработка уравения (решение и вывод)
+            var processor = new EquationProcessor(solver);
+            processor.ProcessEquations(coefficients);
 
         }
     }
